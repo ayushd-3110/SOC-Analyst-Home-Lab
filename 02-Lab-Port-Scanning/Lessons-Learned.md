@@ -1,0 +1,5 @@
+- Learned how Nmap scans appear in Windows Security logs.
+- Used Splunk to investigate firewall connection events.
+- Extracted IOC using SPL.
+- Mapped activity to MITRE ATT&CK.
+- Built a dashboard for network reconnaissance detection.
