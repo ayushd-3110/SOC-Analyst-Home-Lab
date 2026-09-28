@@ -4,11 +4,14 @@
 
 Suspicious PowerShell execution detected.
 
-## Evidence
+## Evidence Collected
 
-* PowerShell process creation observed.
-* `-ExecutionPolicy Bypass` detected.
-* Command-line arguments extracted from Sysmon logs.
+- PowerShell Operational Log (Event ID 4104)
+- Windows Security Log (Event ID 4688)
+- ScriptBlockText
+- Process Creation Events
+- Splunk Dashboard
+- Timeline Analysis
 
 ## Key Findings
 
@@ -34,3 +37,7 @@ The activity was generated intentionally within the lab for detection validation
 * Alert on hidden PowerShell windows.
 * Investigate PowerShell download activity.
 * Enable PowerShell Script Block Logging in production environments.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.

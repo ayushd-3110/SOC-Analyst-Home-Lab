@@ -21,9 +21,16 @@ The event was investigated using Sysmon process creation logs.
 
 ## Evidence
 
-* Sysmon Event ID 1
-* PowerShell process creation
-* Suspicious command-line arguments
+Primary Evidence
+
+- PowerShell Operational Log (Event ID 4104)
+- Script Block Logging
+
+Secondary Evidence
+
+- Windows Security Event ID 4688
+- Process Creation Events
+- Splunk Dashboard
 
 ## MITRE ATT&CK
 
@@ -46,3 +53,7 @@ The event was investigated using Sysmon process creation logs.
 ## Conclusion
 
 The activity matched known PowerShell attacker tradecraft. In this lab, the event was generated intentionally to validate detection capabilities and SOC investigation procedures.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.

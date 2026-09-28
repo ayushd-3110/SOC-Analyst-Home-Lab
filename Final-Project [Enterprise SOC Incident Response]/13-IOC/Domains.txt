@@ -1,0 +1,1 @@
+# No domains were confirmed as IOCs in the final project.

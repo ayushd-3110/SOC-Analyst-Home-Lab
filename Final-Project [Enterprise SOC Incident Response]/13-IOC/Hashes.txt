@@ -1,0 +1,2 @@
+# No verified final-project hashes were available in the project evidence.
+# Do not invent or copy a hash from another lab.

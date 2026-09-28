@@ -160,3 +160,7 @@ Continuous monitoring reduces incident response time.
 The authentication activity matched the characteristics of a Windows brute-force attack.
 
 The SOC investigation successfully identified the attack pattern, extracted relevant indicators, mapped the activity to MITRE ATT&CK, and documented the incident for future reference.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.

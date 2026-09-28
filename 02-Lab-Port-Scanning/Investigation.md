@@ -29,3 +29,7 @@ Q6
 Was the scan successful?
 
 Review the Nmap output and the network logs to identify which ports were open and responsive.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.

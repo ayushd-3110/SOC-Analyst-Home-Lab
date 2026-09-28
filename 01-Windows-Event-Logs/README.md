@@ -82,3 +82,7 @@ This project contains only normal Windows user activities.
 ## Screenshots
 
 Screenshots of each investigation are available in the **Screenshots** folder.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.

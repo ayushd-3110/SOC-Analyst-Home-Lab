@@ -1,0 +1,15 @@
+Objectives
+-Understand Windows Scheduled Task persistence.
+-Generate a controlled Scheduled Task.
+-Enable Windows auditing for Scheduled Task creation.
+-Generate Event ID 4698.
+-Forward the event to Splunk.
+-Detect Event ID 4698 using SPL.
+-Investigate the task creation event.
+-Identify the task name and command.
+-Determine whether the activity is malicious or legitimate.
+-Map the behavior to MITRE ATT&CK.
+-Collect relevant IOCs.
+-Document the investigation.
+-Classify the incident.
+-Understand appropriate SOC response actions.

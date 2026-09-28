@@ -93,3 +93,7 @@ The investigation identified only legitimate Windows authentication events.
 No malicious activity or indicators of compromise were found.
 
 This activity represents normal user behavior.
+
+## Screenshot Evidence
+
+For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
