@@ -1,67 +1,30 @@
-Incident Report
-Incident Title
-Suspicious Scheduled Task Creation
+# Incident Report — Scheduled Task Investigation
 
-Incident ID
-SOC-LAB-006
-Detection Source
-Splunk
-Event
-Windows Security Event ID 4698
-Affected Asset
-Windows Victim VM
-Severity
-Low / Informational
-Description
-A Scheduled Task named WindowsUpdateCheck was detected on the Windows endpoint. The task was created intentionally as part of a controlled SOC security lab.
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-06 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 20 August 2026 |
+| Affected asset | DESKTOP-PB7D0G9 |
+| Severity | Low / Informational |
+| Disposition | Closed — controlled training exercise |
 
-Investigation Findings
-The analyst identified:
+## Investigation findings
 
-Scheduled Task creation event
+I reviewed Event 4698 at 20:39:19.368 for task WindowsUpdateCheck, created by ayush. The archived dashboard shows two creation records.
 
-Task name
+## Evidence limitations and false positives
 
-Creating user
+The dashboard's extracted user column is blank despite the account appearing in the raw event. Creation does not establish later execution or deletion.
 
-Task command
+## Analyst verdict
 
-Affected endpoint
+Authorized scheduled-task exercise; no malicious payload established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-Event timestamp
+## Response and lessons learned
 
-The configured command was:
+Document the creator, task identity, trigger, action, and any separately verified execution or cleanup. No production containment action was taken or claimed for this exercise.
 
-cmd.exe /c echo SOC-LAB-6
-No malicious payload or external network communication was involved.
+## Evidence reference
 
-MITRE ATT&CK
-T1053.005
-Scheduled Task/Job: Scheduled Task
-Verdict
-Benign / Security Testing
-Recommended SOC Response
-In a real incident:
-
-Validate the task.
-
-Identify the creator.
-
-Determine whether the task is authorized.
-
-Examine the configured executable/script.
-
-Check for related suspicious activity.
-
-Disable/remove malicious tasks.
-
-Isolate the endpoint if compromise is suspected.
-
-Escalate to L2/Incident Response when appropriate.
-
-Final Disposition
-Closed — Benign Lab Simulation
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

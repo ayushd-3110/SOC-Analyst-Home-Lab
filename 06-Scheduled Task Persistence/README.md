@@ -1,50 +1,39 @@
-Title: Scheduled Task Persistence Detection & Investigation
+# Lab 6: Scheduled Task Investigation
 
-Overview
-This lab simulates a common Windows persistence technique where an attacker creates a Scheduled Task to execute a command automatically. Windows Security Event ID 4698 is collected by Splunk and investigated to determine whether the activity is legitimate or suspicious.
+## Purpose
 
-The lab follows a realistic SOC workflow:
-Suspicious Activity
-       ↓
-Windows Event 4698
-       ↓
-Splunk Detection
-       ↓
-Alert Triage
-       ↓
-Investigation
-       ↓
-MITRE ATT&CK Mapping
-       ↓
-IOC Collection
-       ↓
-Incident Classification
-       ↓
-Response
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
+## Environment and observed results
 
-Tools
-Windows VM
+- **Asset:** DESKTOP-PB7D0G9
+- **Evidence date:** 20 August 2026
+- **SIEM:** Splunk Enterprise
 
-Splunk Enterprise
+I reviewed Event 4698 at 20:39:19.368 for task WindowsUpdateCheck, created by ayush. The archived dashboard shows two creation records.
 
-Splunk Universal Forwarder
+## Investigation limitations
 
-Windows Event Viewer
+The dashboard's extracted user column is blank despite the account appearing in the raw event. Creation does not establish later execution or deletion.
 
-VMware
+## Analyst verdict
 
-Detection Source
-Windows Security Event ID: 4698
+Authorized scheduled-task exercise; no malicious payload established.
 
-MITRE ATT&CK
-T1053.005
-Scheduled Task/Job: Scheduled Task
+Document the creator, task identity, trigger, action, and any separately verified execution or cleanup.
 
+## Documentation
 
-Lab Result
-A controlled Scheduled Task was created on the Windows endpoint and successfully detected in Splunk using Event ID 4698.
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

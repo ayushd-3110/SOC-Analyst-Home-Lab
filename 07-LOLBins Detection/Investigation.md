@@ -1,67 +1,19 @@
-# Investigation
+# Investigation — LOLBins Process Investigation
 
-## 1. Alert Identification
+## Question
 
-Identify the suspicious LOLBin execution.
+What does the archived telemetry establish about activity on DESKTOP-NH5RCBO, and what remains uncertain?
 
-Observed:
+## Observations
 
-certutil.exe
+I reviewed an archived dashboard showing one certutil.exe process event associated with ayush and a local file-inspection operation.
 
-## 2. User Investigation
+## Analysis
 
-Account:
+A legitimate signed utility being executed does not establish abuse. The panel titled Total single value is an archived presentation issue.
 
-ayush
+## Conclusion and follow-up
 
-Determine whether the account is expected to perform administrative
-or troubleshooting activity.
+Benign controlled utility execution. Review the executable path, parent process, command context and authorization; mark any technique mapping as conceptual unless its behavior is observed.
 
-## 3. Host Investigation
-
-Host:
-
-DESKTOP-NH5RCBO
-
-Determine the role of the endpoint and whether the user normally
-uses the system.
-
-## 4. Process Investigation
-
-New Process:
-
-C:\Windows\System32\certutil.exe
-
-## 5. Parent Process Investigation
-
-Parent:
-
-C:\Windows\System32\cmd.exe
-
-The parent-child relationship should be reviewed for suspicious
-execution chains.
-
-## 6. Command-Line Investigation
-
-Observed:
-
-certutil -dump C:\Windows\System32\notepad.exe
-
-The command was generated intentionally as part of this SOC lab.
-
-## 7. Timeline Investigation
-
-Review surrounding Event ID 4688 events and other available telemetry
-to determine whether additional suspicious activity occurred.
-
-## 8. Verdict
-
-The observed activity is:
-
-Benign / Controlled Lab Activity
-
-No containment is required.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

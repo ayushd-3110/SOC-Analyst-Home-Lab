@@ -1,44 +1,5 @@
 # Triage
 
-## Triage Goal
+Review the user network logon, process events and task creation as separate leads. Background Windows and forwarding telemetry should not be interpreted as evidence of compromise. A matching failure sequence and session linkage remain unverified.
 
-Quickly determine:
-
-1. What happened?
-2. Which host is involved?
-3. Which account is involved?
-4. When did it happen?
-5. What evidence is available?
-6. Is immediate containment required?
-
-## Initial Evidence
-
-- Failed authentication
-- Successful authentication
-- Process creation
-- PowerShell activity
-- Discovery activity
-
-## Triage Decision
-
-In a production environment, the authentication-to-execution sequence would justify deeper investigation.
-
-In this lab, the analyst knows the activity was intentionally generated.
-
-## Evidence Preservation
-
-Record:
-
-- timestamps
-- host
-- user
-- source IP
-- process path
-- command line
-- relevant event IDs
-- screenshots
-- Splunk queries
-
-## Analyst Rule
-
-Do not add an IOC or finding just because a query was expected to return something. Record what the telemetry actually shows.
+See the [archived screenshot index](../Screenshots/README.md) and [final report](../16-Incident-Report/Final-Incident-Report.md) for evidence and limitations.

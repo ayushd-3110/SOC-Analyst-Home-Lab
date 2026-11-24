@@ -38,7 +38,11 @@ index=main EventCode=4624
 
 ```spl
 index=main EventCode=4625
-| stats count by Account_Name
+| eval TargetAccount=lower(trim(TargetUserName))
+| eval TargetDomain=lower(trim(TargetDomainName))
+| eval AccountGroup=case(isnull(TargetAccount) OR TargetAccount="" OR TargetAccount="-","(missing target account)",match(TargetAccount,"[$]$"),"(machine account)",isnotnull(TargetDomain) AND TargetDomain!="" AND TargetDomain!="-",TargetDomain."\\".TargetAccount,true(),TargetAccount)
+| stats count AS FailedLogons BY AccountGroup
+| sort 0 -FailedLogons
 ```
 
 ---
@@ -84,6 +88,4 @@ index=main EventCode=4625
 ```spl
 index=main (EventCode=4624 OR EventCode=4625)
 | table _time EventCode ComputerName Message
-```
-
 ```

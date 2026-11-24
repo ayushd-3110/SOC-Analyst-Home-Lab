@@ -1,100 +1,30 @@
+# Incident Report — Endpoint Threat Hunting
 
----
-
-# 12. `Incident-Report.md`
-
-```markdown
-# Incident Report
-
-## Incident Information
-
-| Field | Details |
+| Field | Detail |
 |---|---|
-| Incident ID | SOC-LAB14-INC-001 |
-| Title | Threat Hunting – Suspicious Windows Endpoint Activity |
-| Category | Threat Hunting / Endpoint Investigation |
-| Severity | Medium |
-| Priority | P2 |
-| Status | Closed – Controlled Lab Simulation |
+| Incident ID | SOC-LAB-14 |
 | Analyst | Ayush Dhumal |
-| Host | DESKTOP-NH5RCBO |
-| IP | 192.168.234.130 |
-| User | ayush |
+| Evidence date | 26 September 2026 |
+| Affected asset | DESKTOP-NH5RCBO |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
----
+## Investigation findings
 
-## Executive Summary
+I reviewed the archived dashboard and mixed authentication/process timeline. The discovery chart groups 11 network, 8 user, 2 process and 1 system discovery matches.
 
-A proactive threat-hunting investigation was performed on a Windows workstation after intelligence suggested possible unauthorized activity.
+## Evidence limitations and false positives
 
-The analyst searched Windows endpoint telemetry for authentication events, process creation, PowerShell execution, and system discovery commands.
+The suspicious process panel includes ordinary Splunk forwarding activity. An event list does not establish an authentication-to-process chain; the displayed results include unrelated background telemetry.
 
-Controlled laboratory activity was generated to test the hunting hypothesis.
+## Analyst verdict
 
----
+Controlled hunt completed; no confirmed compromise or causal chain established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-## Investigation Findings
+## Response and lessons learned
 
-The investigation examined:
+State the hypothesis and its observed limitations, validate authorized activity, and distinguish findings from investigation leads. No production containment action was taken or claimed for this exercise.
 
-- Windows authentication activity
-- Process creation
-- PowerShell execution
-- User discovery
-- System discovery
-- Network discovery
-- Process relationships
+## Evidence reference
 
-The available telemetry was correlated in Splunk to build an investigation timeline.
-
----
-
-## Evidence
-
-Primary evidence sources:
-
-- Windows Event ID 4624
-- Windows Event ID 4625
-- Windows Event ID 4688
-- Splunk search results
-- Process command lines
-- Parent-child process information
-
----
-
-## Analysis
-
-PowerShell and Windows discovery commands were identified as part of the controlled laboratory activity.
-
-The presence of these commands alone does not establish malicious activity because the commands are also legitimate administrative functions.
-
-The investigation therefore considered process relationships, authentication activity, command lines, users, and timestamps.
-
----
-
-## Final Classification
-
-**Controlled Threat-Hunting Simulation**
-
-No real-world compromise was established from this laboratory exercise.
-
----
-
-## Recommended Real-SOC Actions
-
-If similar activity were detected in a production environment, an analyst could:
-
-1. Validate the affected user.
-2. Verify whether the activity was authorized.
-3. Investigate the source IP.
-4. Review the complete process tree.
-5. Review PowerShell logs.
-6. Check for persistence mechanisms.
-7. Review additional endpoint activity.
-8. Search for the same indicators across other hosts.
-9. Preserve relevant evidence.
-10. Escalate if evidence supports compromise.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

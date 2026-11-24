@@ -1,10 +1,4 @@
-
----
-
-# 2. `Scenario.md`
-
-```markdown
-# Scenario — Phishing Investigation
+# Scenario - Phishing Investigation
 
 ## Background
 

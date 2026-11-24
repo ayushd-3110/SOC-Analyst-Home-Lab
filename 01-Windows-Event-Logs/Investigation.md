@@ -1,99 +1,19 @@
-# Investigation Report
+# Investigation — Windows Authentication Monitoring
 
-## Scenario
+## Question
 
-An employee logged into a Windows workstation.
+What does the archived telemetry establish about activity on DESKTOP-5T5E396, and what remains uncertain?
 
-The SOC team investigated Windows Security Logs to verify authentication events.
+## Observations
 
----
+I reviewed Windows Security events 4624 and 4625 in Splunk. The dashboard shows 85 successful and 3 failed logon records in the displayed window. At 16:00:32.888, a type 2 logon for LEO failed with status 0xC000006D and substatus 0xC000006A.
 
-# Investigation Summary
+## Analysis
 
-| Event | Status |
-|--------|---------|
-| Successful Login | Verified |
-| Failed Login | Verified |
+The per-user panel attributes the same three failures to LEO and the computer account. Its counts are not independent. Service and machine logons also affect the successful-logon total.
 
+## Conclusion and follow-up
 
----
+Expected authentication test; no unauthorized access established. Validate the target account and distinguish interactive, network and service logons. Report event counts separately from unique users.
 
-# Successful Login (Event ID 4624)
-
-### Splunk Query
-
-```spl
-index=main EventCode=4624
-```
-
-### Findings
-
-Computer Name:
-DESKTOP-5T5E396
-
-Login Status:
-Successful
-
-Event ID:
-4624
-
-Time:
-27 June 2026 15:41:10
-
-Log Source:
-Windows Security Log
-
-Result:
-User successfully authenticated to the Windows workstation.
-
----
-
-# Failed Login (Event ID 4625)
-
-### Splunk Query
-
-```spl
-index=main EventCode=4625
-```
-
-### Findings
-
-Computer Name:
-DESKTOP-5T5E396
-
-Attempted User:
-LEO
-
-Logon Type:
-2 (Interactive)
-
-Failure Reason:
-Unknown username or bad password
-
-Status:
-0xC000006D
-
-Sub Status:
-0xC000006A
-
-Time:
-27 June 2026 16:00:32
-
-Result:
-Authentication failed because an incorrect password was entered.
-
----
-
-
-
-# Conclusion
-
-The investigation identified only legitimate Windows authentication events.
-
-No malicious activity or indicators of compromise were found.
-
-This activity represents normal user behavior.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

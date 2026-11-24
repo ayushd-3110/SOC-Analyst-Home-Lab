@@ -1,20 +1,21 @@
-# Splunk query language :
-To see successful logins: `index=main  EventCode=4624`
-To see failed logins: `index=main EventCode=4625`
-Dashboard command :
+# Splunk authentication searches
 
-Successful Login Count: 'index=wineventlog EventCode=4624 | stats count AS "Successful Logins"'
+These historical search examples use the documented index `main`. Validate the index and sourcetype locally before execution.
 
-Failed Login Count: 'index=wineventlog EventCode=4625 | stats count AS "Failed Logins"'
+## Event review
 
-Authentication Timeline : 'index=wineventlog (EventCode=4624 OR EventCode=4625)
-| timechart count by EventCode'
+```spl
+index=main (EventCode=4624 OR EventCode=4625)
+| stats count by EventCode
+```
 
-Event Distribution: 'index=wineventlog (EventCode=4624 OR EventCode=4625)
-| stats count by EventCode'
+## Timeline
 
-Failed Login by User: 'index=wineventlog EventCode=4625 | stats count by Account_Name'
+```spl
+index=main (EventCode=4624 OR EventCode=4625)
+| timechart count by EventCode
+```
 
-Successful Login by User: 'index=wineventlog EventCode=4624 | stats count by Account_Name'
+## Account attribution
 
-Recent Authentication Events: 'index=wineventlog (EventCode=4624 OR EventCode=4625) | table _time EventCode Account_Name ComputerName Message | sort - _time'
+The archived account chart groups a multivalued Account_Name field and can count both the subject and target account. Validate the target account against raw events before reporting per-user totals. Separate machine/service accounts from human logons; the revised results are not yet available.

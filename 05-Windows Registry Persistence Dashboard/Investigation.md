@@ -1,47 +1,19 @@
-# Investigation
+# Investigation — Registry Persistence Investigation
 
-## Summary
+## Question
 
-A persistence technique was detected using Windows Registry Run Keys.
+What does the archived telemetry establish about activity on DESKTOP-PB7D0G9, and what remains uncertain?
 
----
+## Observations
 
-## Evidence
+I verified the controlled Run-key entry Lab5Persistence and reviewed the archived dashboard, which displays six registry-related records.
 
-- Process Creation (4688)
-- Registry Access (4663)
-- Registry Value Modified (4657)
+## Analysis
 
----
+The dashboard's object name, value name and user columns are blank; broad object-access and process creation records do not independently prove changes to the particular value. Execution at the next logon has not been demonstrated.
 
-## Observed Process
+## Conclusion and follow-up
 
-reg.exe
+Controlled registry artifact observed; attacker persistence not established. Document the actual registry value and distinguish creation, execution and cleanup evidence.
 
----
-
-## Modified Registry
-
-HKCU\Software\Microsoft\Windows\CurrentVersion\Run
-
----
-
-## Created Value
-
-WindowsUpdate
-
----
-
-## Impact
-
-Persistence established after user logon.
-
----
-
-## Conclusion
-
-The attack successfully created a Registry Run Key. Windows Security Logs provided sufficient evidence to detect and investigate the persistence technique.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

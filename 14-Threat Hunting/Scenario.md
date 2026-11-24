@@ -1,10 +1,4 @@
-
----
-
-# 2. `Scenario.md`
-
-```markdown
-# Scenario – Threat Hunting
+# Scenario - Threat Hunting
 
 ## Background
 
@@ -54,3 +48,4 @@ systeminfo
 ipconfig
 tasklist
 powershell.exe
+```

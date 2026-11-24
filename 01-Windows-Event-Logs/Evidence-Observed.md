@@ -8,3 +8,9 @@ The screenshots show Windows Security authentication events collected in Splunk.
 
 ## Evidence Boundary
 The screenshots prove that 4624/4625 telemetry was collected and searchable. They do not by themselves prove that the successful login was malicious.
+
+## Additional review findings
+
+The per-user panel attributes the same three failures to LEO and the computer account. Its counts are not independent. Service and machine logons also affect the successful-logon total.
+
+**Disposition:** Expected authentication test; no unauthorized access established.

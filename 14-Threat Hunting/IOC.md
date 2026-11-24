@@ -1,9 +1,3 @@
-
----
-
-# 8. `IOC.md`
-
-```markdown
 # IOC Extraction
 
 ## Purpose
@@ -39,3 +33,4 @@ powershell.exe
 ipconfig
 systeminfo
 tasklist
+```

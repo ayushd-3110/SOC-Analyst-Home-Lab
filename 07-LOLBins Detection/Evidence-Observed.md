@@ -12,3 +12,9 @@ The screenshot set also contains Splunk detection and investigation views plus a
 
 ## Evidence Boundary
 The command demonstrates LOLBin execution. It does not by itself prove malicious intent.
+
+## Additional review findings
+
+A legitimate signed utility being executed does not establish abuse. The panel titled Total single value is an archived presentation issue.
+
+**Disposition:** Benign controlled utility execution.

@@ -86,4 +86,7 @@ The authentication logs indicated multiple failed login attempts against the Win
 
 The event pattern matched a brute-force authentication attack.
 
-The SOC investigation confirmed suspicious authentication activity requiring further investigation. 
+The archived events show repeated authentication failures requiring investigation; successful compromise remains unverified.
+## Validate a threshold-based detection
+
+Use the [capstone authentication validation searches](../Final-Project%20%5BEnterprise%20SOC%20Incident%20Response%5D/10-Splunk/Authentication-Validation.md). The dashboard totals are useful for scoping. The detection checks an ordered sequence for the same host, target identity and source IP.

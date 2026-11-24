@@ -1,9 +1,3 @@
-
----
-
-# 9. `MITRE-Mapping.md`
-
-```markdown
 # MITRE ATT&CK Mapping
 
 | Technique | ID | Lab Activity |

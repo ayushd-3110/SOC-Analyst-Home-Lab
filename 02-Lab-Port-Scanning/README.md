@@ -1,89 +1,40 @@
-# Lab 02 – Internal Port Scan Detection using Splunk
+# Lab 2: Network Connection and Port-Scan Investigation
 
-## Objective
+## Purpose
 
-Simulate an internal reconnaissance attack using Kali Linux against a Windows workstation and investigate the activity using Splunk Enterprise.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-## Skills Learned
+## Environment and observed results
 
-- Network Reconnaissance Detection
-- Windows Firewall Log Analysis
-- Splunk Searching
-- IOC Identification
-- MITRE ATT&CK Mapping
-- Dashboard Development
-- Incident Investigation
+- **Asset:** Windows endpoint 192.168.234.133
+- **Evidence date:** 2 July 2026
+- **SIEM:** Splunk Enterprise
 
----
+I reviewed the recorded scan and Windows network telemetry. The investigation shows 8,072 Event 5156 records, including browser, DNS and Splunk forwarding activity.
 
-## Lab Architecture
+## Investigation limitations
 
-Attacker
+The dashboard reflects total permitted connections, not 8,072 scan attempts. The Windows endpoint is the leading source in the dashboard. Event 5158 indicates a local port bind and cannot establish scanning independently.
 
-Kali Linux
+## Analyst verdict
 
-IP:
-192.168.234.129
+Controlled network reconnaissance exercise; exploitation not established.
 
-↓
+Separate background traffic from the documented test activity; record direction, source, destination, time window and evidence limitations.
 
-Victim
+## Documentation
 
-Windows 10
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Lab Setup](Lab-Setup.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-IP:
-192.168.234.133
-
-↓
-
-Logs
-
-Windows Security Logs
-
-↓
-
-Universal Forwarder
-
-↓
-
-Splunk Enterprise
-
-Host
-
-192.168.6.1
-
----
-
-## Attack
-
-Tool Used
-
-Nmap
-
-Command
-
-nmap -sn 192.168.234.133 
-sudo nmap -sV  192.168.234.133
-nmap -A 192.168.234.133
-
----
-
-## Detection
-
-Windows Security Event ID
-
-5156
-
-5158
-
----
-
-## MITRE ATT&CK
-
-T1046
-
-Network Service Discovery
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

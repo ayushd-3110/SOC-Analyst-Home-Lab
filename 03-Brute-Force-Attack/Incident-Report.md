@@ -1,166 +1,30 @@
-# Incident Report
+# Incident Report — Brute-Force Authentication Investigation
 
-## Incident Information
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-03 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 24 July 2026 (archived logs) |
+| Affected asset | DESKTOP-PB7D0G9 |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-Incident ID:    SOC-LAB-03
+## Investigation findings
 
-Incident Name:  Windows Brute Force Attack Detection
+I reviewed repeated Event 4625 records around 15:26 and Event 4624 records around 15:27–15:32. The archived dashboard shows 54 failed and 346 successful logon events.
 
-Date:   25/07/2026
+## Evidence limitations and false positives
 
-Analyst:    Ayush
+The displayed records do not establish that the same account and source succeeded after failures. The protocol and alert trigger are not independently established. The username panel includes missing and machine accounts and inconsistent capitalization; a revised panel is documented but has not been rerun.
 
-Severity:   High
+## Analyst verdict
 
-Status: Closed
+Repeated authentication failures observed; successful compromise unverified. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
----
+## Response and lessons learned
 
-# Executive Summary
+Validate target-account fields and authentication context; record only evidenced timestamps. Review account-lockout and access-control policies. No production containment action was taken or claimed for this exercise.
 
-A Windows brute-force authentication attack was simulated using Hydra from a Kali Linux attacker machine against a Windows 10 victim machine.
+## Evidence reference
 
-Splunk Enterprise detected multiple failed authentication attempts through Windows Security Logs.
-
-The authentication activity was investigated and correlated to identify the attack pattern.
-
----
-
-# Environment
-
-SIEM:   Splunk Enterprise
-
-Attacker
-
-Kali Linux
-
-IP: 192.168.234.129
-
-Victim
-
-Windows 10
-
-IP: 192.168.234.128
-
----
-
-# Attack Summary
-
-Attack Type
-
-Windows Brute Force
-
-Tool Used
-
-Hydra
-
-Target Service
-
-Remote Desktop Protocol (RDP)
-
-Target Account
-
-ayush
-
----
-
-# Evidence
-
-Windows Event ID 4625
-
-Failed Logons
-
-Windows Event ID 4624
-
-Successful Logons
-
-Splunk Authentication Dashboard
-
-Authentication Timeline
-
-Raw Authentication Logs
-
----
-
-# Timeline
-
-| Time | Event |
-|------|-------|
-| 02:00 | Hydra attack started |
-| 02:01 | Failed authentication events generated |
-| 02:03 | Splunk alert triggered |
-| 02:05 | SOC investigation initiated |
-| 02:10 | Incident confirmed |
-
----
-
-# Indicators of Compromise
-
-| IOC | Value |
-|------|-------|
-| Source IP | 192.168.234.129 |
-| Destination IP | 192.168.234.128 |
-| Username | ayush |
-| Tool | Hydra |
-| Protocol | RDP |
-
----
-
-# MITRE ATT&CK Mapping
-
-| Tactic | Technique |
-|---------|-----------|
-| Credential Access | T1110 - Brute Force |
-| Initial Access | T1078 - Valid Accounts (If Successful) |
-
----
-
-# Risk Assessment
-
-Likelihood: High
-
-Impact: High
-
-Business Risk:  Credential compromise may allow attackers to gain unauthorized access to sensitive business resources.
-
----
-
-# Recommendations
-
-Implement Multi-Factor Authentication.
-
-Enable Account Lockout Policy.
-
-Review failed authentication events regularly.
-
-Deploy authentication alerts in Splunk.
-
-Monitor RDP activity continuously.
-
-Restrict RDP access using firewall rules.
-
-Use strong password policies.
-
----
-
-# Lessons Learned
-
-Authentication logs provide valuable evidence for detecting brute-force attacks.
-
-Splunk enables rapid investigation through centralized log collection.
-
-Correlation between failed and successful logins improves attack detection.
-
-Continuous monitoring reduces incident response time.
-
----
-
-# Conclusion
-
-The authentication activity matched the characteristics of a Windows brute-force attack.
-
-The SOC investigation successfully identified the attack pattern, extracted relevant indicators, mapped the activity to MITRE ATT&CK, and documented the incident for future reference.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

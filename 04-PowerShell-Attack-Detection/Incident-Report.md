@@ -1,59 +1,30 @@
-# Incident Report
+# Incident Report — PowerShell Activity Investigation
 
-## Incident Information
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-04 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 25–26 July 2026 |
+| Affected asset | DESKTOP-PB7D0G9 |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-* Incident ID: SOC-LAB-04
-* Incident Name: Suspicious PowerShell Execution
-* Severity: High
-* Analyst: Ayush
-* Status: Closed
+## Investigation findings
 
-## Executive Summary
+I reviewed Windows process and PowerShell Operational telemetry. The archived dashboard includes Event 4104 and 799 total PowerShell events, while the activity-by-host panel shows 13 records.
 
-Splunk detected suspicious PowerShell execution on a Windows workstation. The command line contained `-ExecutionPolicy Bypass`, a parameter frequently associated with attacker activity.
+## Evidence limitations and false positives
 
-The event was investigated using Sysmon process creation logs.
+The panels use different scopes that have not been reconciled. ScriptBlockText is blank and the user is NOT_TRANSLATED. Event Code 1.png is a SecurityCenter Application event, not Sysmon process creation.
 
-## Affected Asset
+## Analyst verdict
 
-* Host: DESKTOP-PB7DOG9
-* User: ayush
+Suspicious-looking test activity observed; no malicious payload established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-## Evidence
+## Response and lessons learned
 
-Primary Evidence
+Validate the event provider, source, account resolution and field availability before interpreting dashboard counts. No production containment action was taken or claimed for this exercise.
 
-- PowerShell Operational Log (Event ID 4104)
-- Script Block Logging
+## Evidence reference
 
-Secondary Evidence
-
-- Windows Security Event ID 4688
-- Process Creation Events
-- Splunk Dashboard
-
-## MITRE ATT&CK
-
-* T1059.001 – PowerShell
-
-## Risk Assessment
-
-* Likelihood: High
-* Impact: Medium
-* Business Risk: Unauthorized script execution and potential malware delivery.
-
-## Recommendations
-
-* Monitor PowerShell activity.
-* Alert on `ExecutionPolicy Bypass`.
-* Enable Script Block Logging.
-* Restrict unnecessary PowerShell usage.
-* Investigate PowerShell download activity.
-
-## Conclusion
-
-The activity matched known PowerShell attacker tradecraft. In this lab, the event was generated intentionally to validate detection capabilities and SOC investigation procedures.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

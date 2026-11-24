@@ -11,3 +11,9 @@ The screenshot set also includes Task Scheduler trigger/action views, task verif
 
 ## Evidence Boundary
 The task name resembles a system task, but the evidence should be described as a lab-created scheduled task. Do not call it a real attacker persistence mechanism without additional evidence.
+
+## Additional review findings
+
+The dashboard's extracted user column is blank despite the account appearing in the raw event. Creation does not establish later execution or deletion.
+
+**Disposition:** Authorized scheduled-task exercise; no malicious payload established.

@@ -10,3 +10,9 @@ The screenshots show a harmless ransomware-style file activity simulation in `C:
 
 ## Evidence Boundary
 The screenshots show file creation/rename simulation. They do not show real encryption or destructive ransomware behavior.
+
+## Additional review findings
+
+The dashboard marker is not file-operation telemetry and does not independently prove all 20 operations. Renaming files does not encrypt their contents.
+
+**Disposition:** Harmless file-activity exercise; no ransomware or encryption established.

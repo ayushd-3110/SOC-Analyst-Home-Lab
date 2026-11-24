@@ -1,29 +1,5 @@
-# Threat Hunting Findings
+# Threat hunting findings
 
-## Finding 1 – PowerShell
+The archived PowerShell searches contain both lab user activity and routine forwarding processes. The discovery search returns 23 records, including prior-day activity and ordinary network maintenance. These cannot all be attributed to the incident window. Combined authentication and process tables are chronological views, not proof of causation.
 
-PowerShell activity was intentionally generated during the exercise and was visible through process-creation telemetry where available.
-
-## Finding 2 – Discovery
-
-Controlled user, system, network, and process discovery commands were executed.
-
-## Finding 3 – Authentication to Execution
-
-The investigation used timestamps to determine whether endpoint execution followed authentication activity.
-
-## Analyst Assessment
-
-The observed pattern is useful for practicing suspicious-activity investigation. Because the activity was intentionally generated in a controlled environment, the findings should not be presented as proof of a real-world intrusion.
-
-## Follow-Up
-
-In a production SOC, I would continue checking:
-
-- parent/child process relationships
-- user and source IP
-- persistence artifacts
-- endpoint file activity
-- other hosts using the same account
-- additional authentication events
-- known IOCs
+The evidence supports investigation leads and an authorized simulation. A shared session or malicious chain was not established. See the [evidence index](../Screenshots/README.md).

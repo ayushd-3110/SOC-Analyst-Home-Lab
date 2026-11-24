@@ -1,58 +1,19 @@
-# Investigation – Lab 12 Account Compromise
+# Investigation — Suspected Account Compromise Investigation
 
-## Investigation Goal
+## Question
 
-The goal of this investigation was to determine whether unusual authentication activity was followed by suspicious endpoint activity.
+What does the archived telemetry establish about activity on DESKTOP-NH5RCBO, and what remains uncertain?
 
-## Evidence Reviewed
+## Observations
 
-The investigation focused on:
+I reviewed the documented four failed logons for ayush from 192.168.234.129. The archived dashboard shows 90 authentication events; the visible successful-logon rows are SYSTEM/computer-account type 5 entries.
 
-- Event ID 4625 – failed logon
-- Event ID 4624 – successful logon
-- Event ID 4672 – special privileges
-- Event ID 4688 – process creation
+## Analysis
 
-## Investigation Steps
+The available Lab 12 screenshots do not prove a successful ayush logon or link post-authentication processes to that account. The displayed process rows are dominated by Splunk forwarding activity.
 
-### 1. Review Failed Logons
+## Conclusion and follow-up
 
-I searched for repeated Event ID 4625 records and checked:
+Suspicious authentication failures observed; confirmed account compromise not established. Check matching account, source, time and session context before attributing subsequent activity; preserve the gap in the record.
 
-- account name
-- source address
-- logon type
-- authentication package
-- event time
-
-### 2. Review Successful Logons
-
-I then checked Event ID 4624 to see whether a successful authentication occurred after the failed attempts.
-
-### 3. Review Process Activity
-
-Event ID 4688 was reviewed for process creation after authentication.
-
-### 4. Review Privileged Activity Carefully
-
-Event ID 4672 was checked separately.
-
-A 4672 event is not automatically evidence that the simulated user `ayush` received special privileges. The account and event context must be checked before making that conclusion.
-
-## Key Correlation
-
-The useful timeline pattern for this lab was:
-
-**Failed authentication → successful authentication → endpoint activity**
-
-This is an investigation lead. It is not, by itself, proof that the account was compromised.
-
-## Analyst Conclusion
-
-The activity was generated in a controlled lab using the user's own Windows and Kali systems. The exercise demonstrates how a SOC analyst can move from an authentication alert to endpoint investigation.
-
-No real-world account compromise was established.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

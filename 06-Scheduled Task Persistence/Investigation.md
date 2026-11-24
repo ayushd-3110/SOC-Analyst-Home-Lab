@@ -1,56 +1,19 @@
-Investigation
-Step 1 — Validate the Alert
+# Investigation — Scheduled Task Investigation
 
-The SOC analyst identified a Windows Security Event ID 4698, indicating that a Scheduled Task was created.
+## Question
 
-EventCode = 4698
+What does the archived telemetry establish about activity on DESKTOP-PB7D0G9, and what remains uncertain?
 
-The event was confirmed as present in Splunk.
+## Observations
 
-Step 2 — Identify the Host
+I reviewed Event 4698 at 20:39:19.368 for task WindowsUpdateCheck, created by ayush. The archived dashboard shows two creation records.
 
-Determine which Windows endpoint generated the event.
+## Analysis
 
-Host = Windows Victim
-Step 3 — Identify the Task
+The dashboard's extracted user column is blank despite the account appearing in the raw event. Creation does not establish later execution or deletion.
 
-The task identified during the investigation was:
+## Conclusion and follow-up
 
-WindowsUpdateCheck
-Step 4 — Identify the User
+Authorized scheduled-task exercise; no malicious payload established. Document the creator, task identity, trigger, action, and any separately verified execution or cleanup.
 
-Review Event ID 4698's Message field to determine the account responsible for creating the task.
-
-Record the actual username from your event.
-
-User = <username from event>
-Step 5 — Analyze the Command
-
-The controlled task executed:
-
-cmd.exe /c echo SOC-LAB-6
-
-This command does not perform malicious activity.
-
-Step 6 — Determine Intent
-
-The task was intentionally created as part of the SOC lab.
-
-Therefore:
-
-Intent = Security Testing
-Step 7 — Determine Severity
-
-Because the activity is controlled and harmless:
-
-Severity = Informational / Low
-
-In a real environment, the severity could become Medium or High if the task executed a suspicious executable, script, or payload.
-
-Investigation Conclusion
-
-The Scheduled Task creation event was successfully detected and investigated. The task was determined to be a controlled lab simulation rather than malicious persistence.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

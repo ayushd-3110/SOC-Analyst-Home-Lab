@@ -1,25 +1,30 @@
-# Incident Report
+# Incident Report — Network Connection and Port-Scan Investigation
 
-Incident ID : SOC-LAB-02
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-02 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 2 July 2026 |
+| Affected asset | Windows endpoint 192.168.234.133 |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-Date : 02 July 2026
+## Investigation findings
 
-Severity: Medium
+I reviewed the recorded scan and Windows network telemetry. The investigation shows 8,072 Event 5156 records, including browser, DNS and Splunk forwarding activity.
 
-Description: An internal workstation initiated multiple TCP connection attempts against another internal host using Nmap.
+## Evidence limitations and false positives
 
-Affected Asset: Windows 10
+The dashboard reflects total permitted connections, not 8,072 scan attempts. The Windows endpoint is the leading source in the dashboard. Event 5158 indicates a local port bind and cannot establish scanning independently.
 
-Source: 192.168.234.129
+## Analyst verdict
 
-Destination :192.168.234.133
+Controlled network reconnaissance exercise; exploitation not established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-Detection Source : Windows Security Event ID 5156
+## Response and lessons learned
 
-MITRE ATT&CK: T1046
+Separate background traffic from the documented test activity; record direction, source, destination, time window and evidence limitations. No production containment action was taken or claimed for this exercise.
 
-Recommendation: Monitor the host for additional reconnaissance or lateral movement. Verify whether the scanning activity was authorized. Restrict unnecessary network access and implement alerting for repeated connection attempts.
+## Evidence reference
 
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

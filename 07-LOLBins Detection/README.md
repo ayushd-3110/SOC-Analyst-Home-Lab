@@ -1,63 +1,39 @@
-# Lab 7 — LOLBins Detection & Investigation
+# Lab 7: LOLBins Process Investigation
 
-## Overview
+## Purpose
 
-This lab demonstrates the detection and investigation of potentially
-abused Windows Living-off-the-Land Binaries (LOLBins).
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The lab uses Windows Security Event ID 4688 and Splunk Enterprise to
-detect process execution and investigate the associated user, host,
-parent process, and command line.
+## Environment and observed results
 
-## Environment
+- **Asset:** DESKTOP-NH5RCBO
+- **Evidence date:** 23 August 2026
+- **SIEM:** Splunk Enterprise
 
-- Windows Victim
-- Splunk Enterprise
-- Splunk Universal Forwarder
-- Windows Security Logs
-- Event ID 4688
+I reviewed an archived dashboard showing one certutil.exe process event associated with ayush and a local file-inspection operation.
 
-## LOLBin Used
+## Investigation limitations
 
-certutil.exe
+A legitimate signed utility being executed does not establish abuse. The panel titled Total single value is an archived presentation issue.
 
-## Objective
+## Analyst verdict
 
-Detect and investigate suspicious execution of legitimate Windows
-binaries using SIEM-based process telemetry.
+Benign controlled utility execution.
 
-## Attack Simulation
+Review the executable path, parent process, command context and authorization; mark any technique mapping as conceptual unless its behavior is observed.
 
-certutil -dump C:\Windows\System32\notepad.exe
+## Documentation
 
-The command was executed in a controlled lab environment.
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-## Detection
-
-Windows Security Event ID 4688 was used to detect the creation of
-certutil.exe.
-
-## Investigation
-
-The following information was investigated:
-
-- User
-- Host
-- Process
-- Parent process
-- Command line
-- Timestamp
-
-## MITRE ATT&CK
-
-T1218 — System Binary Proxy Execution
-
-## Result
-
-The activity was successfully detected and investigated in Splunk.
-
-The observed activity was classified as controlled/benign lab activity.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

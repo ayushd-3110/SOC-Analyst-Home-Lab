@@ -9,3 +9,9 @@ Screenshots named `splunk 5158.png` and `splunk 5156.png` show Windows firewall 
 
 ## Evidence Boundary
 The screenshots establish scanning activity and network telemetry. They do not prove successful exploitation of the Windows host.
+
+## Additional review findings
+
+The dashboard reflects total permitted connections, not 8,072 scan attempts. The Windows endpoint is the leading source in the dashboard. Event 5158 indicates a local port bind and cannot establish scanning independently.
+
+**Disposition:** Controlled network reconnaissance exercise; exploitation not established.

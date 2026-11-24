@@ -1,17 +1,11 @@
-
----
-
-# 12. `References.md`
-
-```markdown
-# References — Phishing Investigation
+# References - Phishing Investigation
 
 ## MITRE ATT&CK
 
 MITRE ATT&CK was used for mapping phishing and user-execution techniques.
 
-- T1566.002 — Phishing: Spearphishing Link
-- T1204 — User Execution
+- T1566.002 - Phishing: Spearphishing Link
+- T1204 - User Execution
 
 Official MITRE ATT&CK:
 https://attack.mitre.org/

@@ -1,10 +1,4 @@
-
----
-
-# 3. `Objectives.md`
-
-```markdown
-# Objectives – Threat Hunting
+# Objectives - Threat Hunting
 
 ## Primary Objectives
 

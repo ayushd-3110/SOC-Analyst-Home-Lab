@@ -1,68 +1,19 @@
+# Investigation — Ransomware-Style File Activity Investigation
 
-# Investigation
+## Question
 
-## Investigation Objective
+What does the archived telemetry establish about activity on DESKTOP-NH5RCBO, and what remains uncertain?
 
-The objective was to determine whether suspicious process activity was associated with ransomware-like behavior.
+## Observations
 
----
+I reviewed the terminal evidence of 20 test-file rename operations and the archived dashboard, which shows one process marker at 15:12:44.913.
 
-## Investigation Steps
+## Analysis
 
-### 1. Identify the Host
+The dashboard marker is not file-operation telemetry and does not independently prove all 20 operations. Renaming files does not encrypt their contents.
 
-Host identified:
+## Conclusion and follow-up
 
-DESKTOP-NH5RCBO
+Harmless file-activity exercise; no ransomware or encryption established. Separate observed filesystem outcomes from process evidence and document encryption-for-impact as a conceptual simulation only.
 
-### 2. Identify the User
-
-The process creation event showed:
-
-Account Name: ayush
-
-### 3. Identify the Process
-
-The observed process was:
-
-C:\Windows\System32\cmd.exe
-
-### 4. Identify the Parent Process
-
-The 4688 event contained:
-
-Creator Process Name
-
-This allows the analyst to understand which process launched CMD.
-
-### 5. Review the Command Line
-
-Example observed command:
-
-cmd /c dir C:\SOC-Ransomware-Lab
-
-The command confirmed activity involving the dedicated ransomware simulation directory.
-
-### 6. Review Timeline
-
-The analyst should review surrounding 4688 events to determine whether multiple related processes were created within a short period.
-
----
-
-## Investigation Query
-
-```spl
-index=main sourcetype="WinEventLog:Security" EventCode=4688
-| rex field=Message "Account Name:\s+(?<user>[^\r\n]+)"
-| rex field=Message "New Process Name:\s+(?<process_name>[^\r\n]+)"
-| rex field=Message "Creator Process Name:\s+(?<parent_process>[^\r\n]+)"
-| rex field=Message "Process Command Line:\s+(?<command_line>[^\r\n]+)"
-| search command_line="*SOC-Ransomware-Lab*"
-    OR command_line="*RANSOMWARE*"
-    OR command_line="*.locked*"
-| table _time host user process_name parent_process command_line
-| sort - _time
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

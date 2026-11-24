@@ -1,50 +1,30 @@
-# Incident Report
+# Incident Report — Registry Persistence Investigation
 
-## Incident Name
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-05 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 26 July 2026 |
+| Affected asset | DESKTOP-PB7D0G9 |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-Windows Registry Persistence
+## Investigation findings
 
----
+I verified the controlled Run-key entry Lab5Persistence and reviewed the archived dashboard, which displays six registry-related records.
 
-## Severity
+## Evidence limitations and false positives
 
-Medium
+The dashboard's object name, value name and user columns are blank; broad object-access and process creation records do not independently prove changes to the particular value. Execution at the next logon has not been demonstrated.
 
----
+## Analyst verdict
 
-## MITRE ATT&CK
+Controlled registry artifact observed; attacker persistence not established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-T1547.001
+## Response and lessons learned
 
----
+Document the actual registry value and distinguish creation, execution and cleanup evidence. No production containment action was taken or claimed for this exercise.
 
-## Summary
+## Evidence reference
 
-A registry Run Key was created using reg.exe to establish persistence.
-
----
-
-## Evidence
-
-- Event ID 4688
-- Event ID 4663
-- Event ID 4657
-
----
-
-## Impact
-
-The attacker can execute code automatically after user logon.
-
----
-
-## Recommendations
-
-- Remove unauthorized Run Keys
-- Restrict registry modification privileges
-- Monitor Event IDs 4688, 4663, and 4657
-- Review startup registry locations regularly
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

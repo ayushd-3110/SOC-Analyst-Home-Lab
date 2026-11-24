@@ -1,49 +1,39 @@
-# LAB 9 – Ransomware Simulation & Detection
+# Lab 9: Ransomware-Style File Activity Investigation
 
-## Overview
+## Purpose
 
-This lab demonstrates how a SOC analyst can investigate ransomware-like behavior using Windows Security logs and Splunk.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The simulation was performed in a controlled Windows environment using only dummy files.
+## Environment and observed results
 
-No real ransomware was executed and no personal or system files were encrypted.
+- **Asset:** DESKTOP-NH5RCBO
+- **Evidence date:** 29 August 2026
+- **SIEM:** Splunk Enterprise
 
----
+I reviewed the terminal evidence of 20 test-file rename operations and the archived dashboard, which shows one process marker at 15:12:44.913.
 
-## Real-World Scenario
+## Investigation limitations
 
-A user reports that multiple files on a workstation have suddenly been modified and renamed.
+The dashboard marker is not file-operation telemetry and does not independently prove all 20 operations. Renaming files does not encrypt their contents.
 
-The SOC analyst receives suspicious process telemetry and investigates whether the behavior could indicate ransomware.
+## Analyst verdict
 
-The analyst must identify:
+Harmless file-activity exercise; no ransomware or encryption established.
 
-- The affected host
-- The user
-- The process
-- The parent process
-- The command line
-- The timeline
-- Potential indicators
-- Whether the activity is malicious or authorized
+Separate observed filesystem outcomes from process evidence and document encryption-for-impact as a conceptual simulation only.
 
----
+## Documentation
 
-## Lab Environment
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-```text
-Windows Victim VM
-       |
-       | Windows Security Logs
-       ↓
-Splunk Universal Forwarder
-       |
-       ↓
-Splunk Enterprise
-       |
-       ↓
-SOC Detection & Investigation
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

@@ -1,135 +1,30 @@
-# Incident Report
+# Incident Report — IIS Web Security Investigation
 
-## Incident Name
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-10 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 31 August 2026 |
+| Affected asset | Windows IIS endpoint 192.168.234.130 |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-Lab 10 — Web Attack Detection
+## Investigation findings
 
-## Incident Type
+I reviewed the archived IIS dashboard showing 2,560 classified request events from 192.168.234.129. The available screenshots include missing-resource responses and an application warning for SQL-like input.
 
-Web Application Attack
+## Evidence limitations and false positives
 
-## Severity
+Counts represent classified requests, not successful attacks. The warning and HTTP response codes do not establish database access or unauthorized file disclosure. Two dashboard tabs retain default labels.
 
-Medium
+## Analyst verdict
 
-## Status
+Controlled web request investigation; exploitation not established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-Closed — Controlled Lab Simulation
+## Response and lessons learned
 
-## Attacker
+Record request classification, status, source, time and application response without equating a match to compromise. No production containment action was taken or claimed for this exercise.
 
-192.168.234.129
+## Evidence reference
 
-## Target
-
-192.168.234.130
-
-## Web Server
-
-Microsoft IIS 10.0
-
-## SIEM
-
-Splunk Enterprise
-
----
-
-## Executive Summary
-
-A controlled web security exercise was performed against a Windows IIS
-server.
-
-The simulated attacker generated multiple suspicious HTTP requests from
-Kali Linux.
-
-The activity included SQL injection-style input, path traversal and
-web endpoint enumeration.
-
-The IIS logs were successfully collected in Splunk and analyzed using
-custom detection and investigation queries.
-
----
-
-## Timeline
-
-The activity occurred on:
-
-31 August 2026
-
-The IIS logs recorded requests from the Kali system during the lab exercise.
-
----
-
-## Evidence
-
-The investigation identified:
-
-Source IP:
-192.168.234.129
-
-Target IP:
-192.168.234.130
-
-User-Agent:
-curl/8.19.0
-
-Suspicious paths:
-
-/Lab10/admin
-/Lab10/login
-/Lab10/backup
-/Lab10/robots.txt
-
-Suspicious parameters:
-
-id=1%27%20OR%20%271%27=%271
-
-file=../../../../Windows/win.ini
-
----
-
-## Detection
-
-Splunk was used to identify suspicious request patterns and correlate
-multiple requests from the same source.
-
----
-
-## Impact
-
-No real production system was involved.
-
-This was a controlled cybersecurity lab.
-
-The available evidence demonstrates suspicious attack attempts but does not
-establish successful compromise of the Windows host or database.
-
----
-
-## Response
-
-The activity was investigated using IIS logs and Splunk.
-
-The source IP, requested paths, parameters, HTTP status codes and User-Agent
-were identified.
-
-Recommended remediation includes input validation, secure coding practices,
-request filtering and continued SIEM monitoring.
-
----
-
-## Final Assessment
-
-The lab successfully demonstrated a SOC workflow for detecting and
-investigating suspicious web activity:
-
-Detection
-→ Investigation
-→ Correlation
-→ IOC Extraction
-→ Incident Response
-→ Reporting
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

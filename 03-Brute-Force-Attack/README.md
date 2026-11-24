@@ -1,45 +1,41 @@
-# Lab 03 - Windows Brute Force Attack Detection using Hydra
+# Lab 3: Brute-Force Authentication Investigation
 
-## Overview
+## Purpose
 
-This lab demonstrates how a SOC Analyst detects and investigates a Windows brute-force attack using Splunk Enterprise.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The attack is simulated from Kali Linux using Hydra against a Windows 10 virtual machine.
+## Environment and observed results
 
-Authentication events are collected using Splunk Universal Forwarder and investigated within Splunk.
+- **Asset:** DESKTOP-PB7D0G9
+- **Evidence date:** 24 July 2026 (archived logs)
+- **SIEM:** Splunk Enterprise
 
-## Lab Environment
+I reviewed repeated Event 4625 records around 15:26 and Event 4624 records around 15:27–15:32. The archived dashboard shows 54 failed and 346 successful logon events.
 
-Host:
-- Windows 11
-- Splunk Enterprise
+## Investigation limitations
 
-Attacker:
-- Kali Linux
-- IP: 192.168.234.129
+The displayed records do not establish that the same account and source succeeded after failures. The protocol and alert trigger are not independently established. The username panel includes missing and machine accounts and inconsistent capitalization; a revised panel is documented but has not been rerun.
 
-Victim:
-- Windows 10
-- IP: 192.168.234.128
+## Analyst verdict
 
-Installed Tools
+Repeated authentication failures observed; successful compromise unverified.
 
-- Splunk Enterprise
-- Splunk Universal Forwarder
-- Sysmon
-- Hydra
-- VMware Workstation
+Validate target-account fields and authentication context; record only evidenced timestamps. Review account-lockout and access-control policies.
 
-## Skills Learned
+## Documentation
 
-- Authentication Monitoring
-- Windows Event Analysis
-- Splunk SPL
-- IOC Extraction
-- Dashboard Development
-- MITRE ATT&CK Mapping
-- Incident Response
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Lab Setup](Lab-Setup.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [Dashboard](Dashboard.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

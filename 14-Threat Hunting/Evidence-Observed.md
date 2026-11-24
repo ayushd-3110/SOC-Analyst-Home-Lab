@@ -11,3 +11,9 @@ The screenshot set also shows PowerShell threat hunting, discovery-activity hunt
 
 ## Evidence Boundary
 The screenshots demonstrate a controlled threat-hunting exercise. Findings should be tied to the exact process/account/timestamp visible in Splunk rather than assuming every discovered command is malicious.
+
+## Additional review findings
+
+The suspicious process panel includes ordinary Splunk forwarding activity. An event list does not establish an authentication-to-process chain; the displayed results include unrelated background telemetry.
+
+**Disposition:** Controlled hunt completed; no confirmed compromise or causal chain established.

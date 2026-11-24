@@ -1,9 +1,3 @@
-
----
-
-# 9. `References.md`
-
-```markdown
 # References
 
 ## Microsoft Windows Security Auditing
@@ -22,17 +16,17 @@ https://attack.mitre.org/
 
 ---
 
-## MITRE ATT&CK – Windows Command Shell
+## MITRE ATT&CK - Windows Command Shell
 
-T1059.003 – Windows Command Shell
+T1059.003 - Windows Command Shell
 
 https://attack.mitre.org/techniques/T1059/003/
 
 ---
 
-## MITRE ATT&CK – Data Encrypted for Impact
+## MITRE ATT&CK - Data Encrypted for Impact
 
-T1486 – Data Encrypted for Impact
+T1486 - Data Encrypted for Impact
 
 https://attack.mitre.org/techniques/T1486/
 

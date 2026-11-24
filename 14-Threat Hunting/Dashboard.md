@@ -1,9 +1,3 @@
-
----
-
-# 11. `Dashboard.md`
-
-```markdown
 # Threat Hunting Dashboard
 
 ## Dashboard Name
@@ -12,13 +6,12 @@ Lab 14 - Threat Hunting Dashboard
 
 ## Panels
 
-### Panel 1 – Threat Hunting Events by Type
+### ## Panel 1 — Threat Hunting Events by Type
 
 Visualization:
 
 Column Chart
 
-```spl
 index=main (EventCode=4624 OR EventCode=4625 OR EventCode=4688)
 | eval Event_Type=case(
     EventCode=4625,"Failed Authentication",
@@ -29,7 +22,7 @@ index=main (EventCode=4624 OR EventCode=4625 OR EventCode=4688)
 | sort - count
 
 
-Panel 2 – PowerShell Activity Timeline
+## Panel 2 — PowerShell Activity Timeline
 
 Visualization:
 
@@ -39,7 +32,7 @@ index=main EventCode=4688
 | where like(lower(New_Process_Name),"%powershell.exe%")
     OR like(lower(Process_Command_Line),"%powershell%")
 | timechart span=1m count
-Panel 3 – Windows Discovery Commands
+## Panel 3 — Windows Discovery Commands
 
 Visualization:
 
@@ -62,7 +55,7 @@ index=main EventCode=4688
 )
 | stats count by Discovery_Type
 | sort - count
-Panel 4 – Suspicious Process Chain
+## Panel 4 — Suspicious Process Chain
 
 Visualization:
 
@@ -72,7 +65,7 @@ index=main EventCode=4688
 | search New_Process_Name="*powershell.exe*"
 | table _time host Account_Name Creator_Process_Name New_Process_Name Process_Command_Line
 | sort - _time
-Panel 5 – Authentication and Process Correlation
+## Panel 5 — Authentication and Process Correlation
 
 Visualization:
 
@@ -95,3 +88,9 @@ PowerShell execution
 Discovery behavior
 Process relationships
 Endpoint activity timeline
+
+## Archived dashboard review
+
+The suspicious process panel includes ordinary Splunk forwarding activity. An event list does not establish an authentication-to-process chain; the displayed results include unrelated background telemetry.
+
+Treat the panel counts as historical search results, not confirmed incidents. Any proposed changes require a new Splunk run and screenshot; the original image has been preserved.

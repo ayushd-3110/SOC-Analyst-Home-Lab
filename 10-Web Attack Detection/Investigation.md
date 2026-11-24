@@ -1,47 +1,19 @@
-# Investigation Report — Lab 10
+# Investigation — IIS Web Security Investigation
 
-## Summary
+## Question
 
-During the investigation, multiple suspicious HTTP requests were identified
-against the IIS web server.
+What does the archived telemetry establish about activity on Windows IIS endpoint 192.168.234.130, and what remains uncertain?
 
-The activity originated from 192.168.234.129 and targeted
-192.168.234.130.
+## Observations
 
-The attacker used curl/8.19.0 and generated requests associated with SQL
-injection, path traversal and web endpoint enumeration.
+I reviewed the archived IIS dashboard showing 2,560 classified request events from 192.168.234.129. The available screenshots include missing-resource responses and an application warning for SQL-like input.
 
-## Findings
+## Analysis
 
-The following suspicious activity was observed:
+Counts represent classified requests, not successful attacks. The warning and HTTP response codes do not establish database access or unauthorized file disclosure. Two dashboard tabs retain default labels.
 
-- SQL injection-style parameter
-- Path traversal-style parameter
-- /admin enumeration
-- /login enumeration
-- /backup enumeration
-- /robots.txt enumeration
+## Conclusion and follow-up
 
-Some requests returned HTTP 200 while several enumeration requests returned
-HTTP 404.
+Controlled web request investigation; exploitation not established. Record request classification, status, source, time and application response without equating a match to compromise.
 
-## Assessment
-
-The activity is consistent with automated or manual web reconnaissance and
-attempted exploitation.
-
-The available IIS logs demonstrate suspicious requests but do not by
-themselves prove successful compromise.
-
-## Severity
-
-Medium
-
-## Recommendation
-
-Review the vulnerable application, implement proper input validation,
-restrict unnecessary endpoints and continue monitoring IIS logs in Splunk.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

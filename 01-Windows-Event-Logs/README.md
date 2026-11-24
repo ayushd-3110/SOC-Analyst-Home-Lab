@@ -1,88 +1,35 @@
-# Windows Log Investigation (Practical 1)
+# Lab 1: Windows Authentication Monitoring
 
-## Project Overview
+## Purpose
 
-This project demonstrates how to investigate Windows Security Logs using Splunk.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The objective is to identify common Windows authentication events and understand how a SOC analyst investigates user activities.
+## Environment and observed results
 
----
+- **Asset:** DESKTOP-5T5E396
+- **Evidence date:** 27 June 2026
+- **SIEM:** Splunk Enterprise
 
-## Lab Environment
+I reviewed Windows Security events 4624 and 4625 in Splunk. The dashboard shows 85 successful and 3 failed logon records in the displayed window. At 16:00:32.888, a type 2 logon for LEO failed with status 0xC000006D and substatus 0xC000006A.
 
-- Windows 11
-- Splunk Enterprise
-- Splunk Universal Forwarder
-- Windows Security Logs
-- Sysmon (Optional)
+## Investigation limitations
 
----
+The per-user panel attributes the same three failures to LEO and the computer account. Its counts are not independent. Service and machine logons also affect the successful-logon total.
 
-## Objective
+## Analyst verdict
 
-Investigate the following Windows events:
+Expected authentication test; no unauthorized access established.
 
-- Successful Login
-- Failed Login
+Validate the target account and distinguish interactive, network and service logons. Report event counts separately from unique users.
 
+## Documentation
 
----
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Lab Setup](Lab-Setup.md)
+- [Scenario](Scenario.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [MITRE](MITRE.md)
 
-## Windows Event IDs
-
-| Event | Event ID |
-|--------|---------:|
-| Login | 4624 |
-| Failed Login | 4625 |
-
-
----
-
-## Splunk Index
-
-```
-index=main
-```
-
----
-
-## SOC Investigation Questions
-
-- Who logged in?
-- When did the login occur?
-- Was the login successful?
-- Was there a failed login attempt?
-- Which user failed authentication?
-- Was the workstation locked?
-- Was the workstation unlocked?
-- Was the system restarted?
-
----
-
-## MITRE ATT&CK
-
-Not Applicable
-
-This project contains only normal Windows user activities.
-
----
-
-## Skills Learned
-
-- Windows Event Log Analysis
-- Splunk SPL
-- Windows Authentication Investigation
-- Windows Security Event IDs
-- SOC Investigation Workflow
-- Log Analysis
-- Security Monitoring
-
----
-
-## Screenshots
-
-Screenshots of each investigation are available in the **Screenshots** folder.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

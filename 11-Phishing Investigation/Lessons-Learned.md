@@ -1,29 +1,3 @@
+# Lessons learned
 
----
-
-# 11. `Lessons-Learned.md`
-
-```markdown
-# Lessons Learned — Phishing Investigation
-
-## 1. Phishing Often Uses Social Engineering
-
-The simulated email used:
-
-- Urgency
-- Fear
-- Account-security concerns
-- Threat of account suspension
-
-These techniques are designed to encourage quick user action.
-
----
-
-## 2. URLs Require Investigation
-
-A suspicious URL should not automatically be opened in a normal browser.
-
-The lab demonstrated controlled investigation using:
-
-```bash
-curl -I
+The link review demonstrated that social-engineering indicators require verification. The seven archived test requests all returned 404; they are not evidence of victim interaction or credential submission. Preserve original email headers when available and investigate suspicious links using approved safe procedures.

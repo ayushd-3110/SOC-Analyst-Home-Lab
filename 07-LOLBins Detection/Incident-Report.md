@@ -1,72 +1,30 @@
-# Incident Report
+# Incident Report — LOLBins Process Investigation
 
-## Incident Title
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-07 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 23 August 2026 |
+| Affected asset | DESKTOP-NH5RCBO |
+| Severity | Low / Informational |
+| Disposition | Closed — controlled training exercise |
 
-Potential LOLBin Execution — certutil.exe
+## Investigation findings
 
-## Incident Type
+I reviewed an archived dashboard showing one certutil.exe process event associated with ayush and a local file-inspection operation.
 
-Suspicious Process Execution
+## Evidence limitations and false positives
 
-## Severity
+A legitimate signed utility being executed does not establish abuse. The panel titled Total single value is an archived presentation issue.
 
-Low / Informational
+## Analyst verdict
 
-## Affected Host
+Benign controlled utility execution. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-DESKTOP-NH5RCBO
+## Response and lessons learned
 
-## User
+Review the executable path, parent process, command context and authorization; mark any technique mapping as conceptual unless its behavior is observed. No production containment action was taken or claimed for this exercise.
 
-ayush
+## Evidence reference
 
-## Process
-
-C:\Windows\System32\certutil.exe
-
-## Parent Process
-
-C:\Windows\System32\cmd.exe
-
-## Command Line
-
-certutil -dump C:\Windows\System32\notepad.exe
-
-## Detection Source
-
-Windows Security Event ID 4688
-
-## SIEM
-
-Splunk Enterprise
-
-## Investigation Summary
-
-A Windows process-creation event was generated when certutil.exe
-was executed from Command Prompt.
-
-The SOC investigation reviewed the executing user, affected host,
-parent process, executable path, and command line.
-
-The activity was intentionally generated as part of a controlled
-SOC detection lab.
-
-## Findings
-
-No malicious payload, external destination, or confirmed compromise
-was observed.
-
-## Verdict
-
-Benign / Controlled Security Testing
-
-## Response
-
-No containment required.
-
-The event should be documented and the alert closed as authorized
-lab activity.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

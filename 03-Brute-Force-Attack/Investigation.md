@@ -1,144 +1,19 @@
-# Investigation
+# Investigation — Brute-Force Authentication Investigation
 
-## Incident Summary
+## Question
 
-During routine security monitoring, Splunk Enterprise generated alerts indicating multiple failed authentication attempts against a Windows workstation.
+What does the archived telemetry establish about activity on DESKTOP-PB7D0G9, and what remains uncertain?
 
-The authentication failures occurred within a short period, indicating possible password guessing activity.
+## Observations
 
----
-
-## Alert Details
-
-Alert Name: Windows Brute Force Detection
-
-Severity: High
-
-Detection Time: 2.00 
-
----
-
-## Investigation Timeline
-
-| Time | Activity |
-|------|----------|
-| 02:00 | Hydra attack initiated |
-| 02:01 | Multiple Event ID 4625 generated |
-| 02:03 | Authentication investigation started |
-| 02:05 | Authentication logs analyzed |
-| 02:08 | IOC extraction completed |
-| 02:10 | Incident report created |
-
----
-
-## Evidence Collected
-
-Windows Security Event Logs
-
-Failed Logons (4625)
-
-Successful Logons (4624)
-
-Authentication Messages
-
-Splunk Dashboard
-
-Timeline Analysis
-
----
-
-## Questions Investigated
-
-### Which account was targeted?
-
-Target User: ayush
-
----
-
-### How many failed logins occurred?
-
-54
-
----
-
-### Was there a successful login?
-
-Yes 
-
-Event ID:
-
-4624
-
----
-
-### Was the account locked?
-
-No
-
-Event ID:
-
-4740
-
----
-
-### What attack technique was observed?
-
-Credential Brute Force
-
-MITRE ATT&CK
-
-T1110
-
----
-
-## Indicators of Compromise
-
-Source IP:  192.168.234.129
-
-Destination IP: 192.168.234.128
-
-Target Account: ayush
-
-Attack Tool:    Hydra
-
-Protocol:   RDP
-
----
+I reviewed repeated Event 4625 records around 15:26 and Event 4624 records around 15:27–15:32. The archived dashboard shows 54 failed and 346 successful logon events.
 
 ## Analysis
 
-The authentication logs revealed repeated failed login attempts against the same user account.
+The displayed records do not establish that the same account and source succeeded after failures. The protocol and alert trigger are not independently established. The username panel includes missing and machine accounts and inconsistent capitalization; a revised panel is documented but has not been rerun.
 
-The repeated failures suggest password guessing activity consistent with brute-force attacks.
+## Conclusion and follow-up
 
-If a successful login follows these failures, immediate containment actions should be initiated.
+Repeated authentication failures observed; successful compromise unverified. Validate target-account fields and authentication context; record only evidenced timestamps. Review account-lockout and access-control policies.
 
----
-
-## Recommendations
-
-Reset the affected password.
-
-Enable Multi-Factor Authentication (MFA).
-
-Review Account Lockout Policy.
-
-Monitor future authentication attempts.
-
-Review firewall logs.
-
-Investigate the attacking system.
-
-Monitor additional endpoints for similar activity.
-
----
-
-## Investigation Result
-
-Status: Confirmed Brute Force Attempt
-
-Severity:   High
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

@@ -1,93 +1,30 @@
-# Incident Report
+# Incident Report — Ransomware-Style File Activity Investigation
 
-## Incident Title
+| Field | Detail |
+|---|---|
+| Incident ID | SOC-LAB-09 |
+| Analyst | Ayush Dhumal |
+| Evidence date | 29 August 2026 |
+| Affected asset | DESKTOP-NH5RCBO |
+| Severity | Medium (potential risk) |
+| Disposition | Closed — controlled training exercise |
 
-Ransomware-Like Activity Detected on Windows Endpoint
+## Investigation findings
 
-## Incident Type
+I reviewed the terminal evidence of 20 test-file rename operations and the archived dashboard, which shows one process marker at 15:12:44.913.
 
-Ransomware Simulation
+## Evidence limitations and false positives
 
-## Severity
+The dashboard marker is not file-operation telemetry and does not independently prove all 20 operations. Renaming files does not encrypt their contents.
 
-Medium
+## Analyst verdict
 
-## Status
+Harmless file-activity exercise; no ransomware or encryption established. No production impact was established in the supplied evidence. The severity describes the hypothetical risk in a real environment, not a confirmed incident.
 
-Closed – Controlled Lab Exercise
+## Response and lessons learned
 
----
+Separate observed filesystem outcomes from process evidence and document encryption-for-impact as a conceptual simulation only. No production containment action was taken or claimed for this exercise.
 
-## Affected Host
+## Evidence reference
 
-DESKTOP-NH5RCBO
-
-## User
-
-ayush
-
-## Detection Source
-
-Splunk
-
-## Primary Event
-
-Windows Security Event ID 4688 – Process Creation
-
----
-
-## Summary
-
-A controlled ransomware simulation was performed on the Windows endpoint.
-
-Dummy files were created inside:
-
-C:\SOC-Ransomware-Lab
-
-The files were then rapidly modified and renamed with a simulated `.locked` extension.
-
-A simulated ransom note was also created.
-
----
-
-## Investigation
-
-Splunk was used to review Windows Security Event ID 4688.
-
-The investigation identified:
-
-- CMD execution
-- User account involved
-- Parent process
-- Process command line
-- Simulation directory
-
----
-
-## Impact
-
-No production or personal files were affected.
-
-No actual ransomware was executed.
-
-No real file encryption occurred.
-
----
-
-## Response
-
-The activity was confirmed as an authorized security lab simulation.
-
-No containment or remediation was required.
-
----
-
-## Final Classification
-
-False Positive / Authorized Security Testing
-
-The investigation successfully demonstrated the process of detecting and investigating ransomware-like behavior.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+See [Evidence-Observed.md](Evidence-Observed.md) and the original screenshots in this lab. The archived dashboard is historical evidence; any revised detection or presentation must be validated separately in Splunk.

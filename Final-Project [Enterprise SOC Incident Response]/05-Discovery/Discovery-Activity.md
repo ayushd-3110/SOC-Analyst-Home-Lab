@@ -1,34 +1,5 @@
-# Discovery Activity
+# Discovery evidence
 
-## Controlled Commands
+The 15:50 search returns 23 records, including routine network maintenance and previous-day user commands. The observed records should not automatically be attributed to the September 27 network logon.
 
-```cmd
-whoami
-net user
-net user ayush
-hostname
-systeminfo
-wmic os get Caption,Version,BuildNumber
-ipconfig /all
-arp -a
-route print
-tasklist
-tasklist /svc
-powershell -NoProfile -Command "Get-Process"
-powershell -NoProfile -Command "Get-Service"
-powershell -NoProfile -Command "Get-ComputerInfo | Select-Object WindowsProductName,WindowsVersion,OsArchitecture"
-```
-
-`wmic` may not be available on every Windows installation.
-
-## What the Analyst Is Looking For
-
-The commands represent common discovery categories:
-
-- user discovery
-- account discovery
-- system discovery
-- network discovery
-- process discovery
-
-The presence of a discovery command is a signal for investigation, not automatic proof of malicious intent.
+See the [archived screenshot index](../Screenshots/README.md) and [final report](../16-Incident-Report/Final-Incident-Report.md) for evidence and limitations.

@@ -1,25 +1,5 @@
 # Recovery
 
-## Lab Recovery Checklist
+The final terminal capture confirms the endpoint responds and identifies the host and user. The displayed root directory listing does not contain the capstone directory. This is a partial recovery check, not proof of full eradication, restored functionality or live forwarder health.
 
-- Scheduled task removed
-- Temporary simulation artifacts removed
-- Windows endpoint still operational
-- Splunk logging still available
-- No real malware executed
-- No real credentials extracted
-- Final evidence preserved
-
-## Validation
-
-The endpoint should be checked for:
-
-- normal login
-- normal process activity
-- expected network connectivity
-- working log forwarding
-- absence of the test persistence artifact
-
-## Production Example
-
-Recovery could include restoring services, resetting credentials, reimaging a host when required, monitoring the endpoint closely, and confirming business functionality.
+For a production recovery, verify expected service operation, logging and absence of unauthorized artifacts before declaring completion. See the [evidence index](../Screenshots/README.md).

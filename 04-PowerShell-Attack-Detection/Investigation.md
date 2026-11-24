@@ -1,43 +1,19 @@
-# Investigation
+# Investigation — PowerShell Activity Investigation
 
-## Alert
+## Question
 
-Suspicious PowerShell execution detected.
+What does the archived telemetry establish about activity on DESKTOP-PB7D0G9, and what remains uncertain?
 
-## Evidence Collected
+## Observations
 
-- PowerShell Operational Log (Event ID 4104)
-- Windows Security Log (Event ID 4688)
-- ScriptBlockText
-- Process Creation Events
-- Splunk Dashboard
-- Timeline Analysis
-
-## Key Findings
-
-| Item            | Value                  |
-| --------------- | ---------------------- |
-| Host            | DESKTOP-PB7DOG9        |
-| User            | ayush                  |
-| Process         | powershell.exe         |
-| Event ID        | 1                      |
-| Technique       | PowerShell             |
-| Suspicious Flag | ExecutionPolicy Bypass |
+I reviewed Windows process and PowerShell Operational telemetry. The archived dashboard includes Event 4104 and 799 total PowerShell events, while the activity-by-host panel shows 13 records.
 
 ## Analysis
 
-The command line contained parameters commonly used by attackers to bypass PowerShell execution restrictions.
+The panels use different scopes that have not been reconciled. ScriptBlockText is blank and the user is NOT_TRANSLATED. Event Code 1.png is a SecurityCenter Application event, not Sysmon process creation.
 
-The activity was generated intentionally within the lab for detection validation.
+## Conclusion and follow-up
 
-## Recommendation
+Suspicious-looking test activity observed; no malicious payload established. Validate the event provider, source, account resolution and field availability before interpreting dashboard counts.
 
-* Monitor PowerShell execution continuously.
-* Alert on `ExecutionPolicy Bypass`.
-* Alert on hidden PowerShell windows.
-* Investigate PowerShell download activity.
-* Enable PowerShell Script Block Logging in production environments.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

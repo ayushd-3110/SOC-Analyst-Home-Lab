@@ -1,9 +1,3 @@
-
----
-
-# 14. `References.md`
-
-```markdown
 # References
 
 ## Microsoft Windows Security Events

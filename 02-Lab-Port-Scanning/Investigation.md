@@ -1,35 +1,19 @@
-Questions to Answer
-Q1
-Which IP initiated the scan?
-Answer: 192.168.234.129
+# Investigation — Network Connection and Port-Scan Investigation
 
-Q2
-Which host was targeted?
-192.168.234.133
+## Question
 
-Q3
-How many ports were scanned?
-Use:index=sysmon EventCode=3
-| stats dc(DestinationPort)
+What does the archived telemetry establish about activity on Windows endpoint 192.168.234.133, and what remains uncertain?
 
+## Observations
 
-Q4
-What protocol was used?
-TCP
+I reviewed the recorded scan and Windows network telemetry. The investigation shows 8,072 Event 5156 records, including browser, DNS and Splunk forwarding activity.
 
-Q5
-What time did the scan begin?
+## Analysis
 
-Use:
-index=sysmon EventCode=3
-| sort _time
+The dashboard reflects total permitted connections, not 8,072 scan attempts. The Windows endpoint is the leading source in the dashboard. Event 5158 indicates a local port bind and cannot establish scanning independently.
 
+## Conclusion and follow-up
 
-Q6
-Was the scan successful?
+Controlled network reconnaissance exercise; exploitation not established. Separate background traffic from the documented test activity; record direction, source, destination, time window and evidence limitations.
 
-Review the Nmap output and the network logs to identify which ports were open and responsive.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

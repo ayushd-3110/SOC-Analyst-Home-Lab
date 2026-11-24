@@ -13,3 +13,9 @@ The screenshot set contains IIS log collection, Nikto scanning, path-traversal t
 
 ## Evidence Boundary
 The screenshots demonstrate attack attempts and detection logic. The 404 responses and lab warning do not prove successful exploitation of IIS.
+
+## Additional review findings
+
+Counts represent classified requests, not successful attacks. The warning and HTTP response codes do not establish database access or unauthorized file disclosure. Two dashboard tabs retain default labels.
+
+**Disposition:** Controlled web request investigation; exploitation not established.

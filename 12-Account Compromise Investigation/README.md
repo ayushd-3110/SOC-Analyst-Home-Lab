@@ -1,108 +1,40 @@
-# Lab 12 — Account Compromise Investigation
+# Lab 12: Suspected Account Compromise Investigation
 
-## Overview
+## Purpose
 
-This lab simulates a suspected Windows account compromise using controlled authentication activity.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The investigation focuses on multiple failed logins, a successful authentication, possible privileged activity, and post-authentication process execution.
+## Environment and observed results
 
-Splunk is used to collect, detect, correlate, and investigate Windows Security events.
+- **Asset:** DESKTOP-NH5RCBO
+- **Evidence date:** 26 September 2026
+- **SIEM:** Splunk Enterprise
 
----
+I reviewed the documented four failed logons for ayush from 192.168.234.129. The archived dashboard shows 90 authentication events; the visible successful-logon rows are SYSTEM/computer-account type 5 entries.
 
-## Scenario
+## Investigation limitations
 
-The SOC receives an alert indicating suspicious authentication activity against a Windows workstation.
+The available Lab 12 screenshots do not prove a successful ayush logon or link post-authentication processes to that account. The displayed process rows are dominated by Splunk forwarding activity.
 
-The analyst observes:
+## Analyst verdict
 
-- Multiple failed authentication attempts
-- A successful authentication
-- Possible privileged activity
-- Process creation after authentication
+Suspicious authentication failures observed; confirmed account compromise not established.
 
-The objective is to determine whether the activity represents suspicious account behavior.
+Check matching account, source, time and session context before attributing subsequent activity; preserve the gap in the record.
 
----
+## Documentation
 
-## Objectives
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [Dashboard](Dashboard.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
-- Detect failed authentication attempts
-- Investigate Event ID 4625
-- Investigate Event ID 4624
-- Investigate Event ID 4672
-- Investigate Event ID 4688
-- Identify authentication source IP
-- Correlate authentication and endpoint activity
-- Extract IOCs
-- Map activity to MITRE ATT&CK
-- Build a Splunk dashboard
-- Create a SOC incident report
-
----
-
-## Lab Environment
-
-| Component | Description |
-|---|---|
-| SIEM | Splunk Enterprise |
-| Attacker/Test System | Kali Linux |
-| Victim | Windows VM |
-| Log Collector | Splunk Universal Forwarder |
-| Index | main |
-| Authentication Logs | Windows Security |
-| Process Logs | Windows Security / Sysmon where available |
-
----
-
-## Attack Simulation
-
-The following controlled activities were performed:
-
-1. Multiple incorrect SMB authentication attempts
-2. Successful SMB authentication
-3. Harmless command execution
-4. Investigation of privileged activity
-5. Splunk correlation
-
----
-
-## Windows Events
-
-| Event ID | Description |
-|---|---|
-| 4625 | Failed Logon |
-| 4624 | Successful Logon |
-| 4672 | Special Privileges Assigned |
-| 4688 | Process Creation |
-
----
-
-## Detection
-
-The lab detects:
-
-- Multiple failed logins
-- Successful authentication
-- Source IP activity
-- Privileged activity
-- Post-authentication process execution
-
----
-
-## Investigation
-
-The investigation correlates:
-
-```text
-Failed Authentication
-        ↓
-Successful Authentication
-        ↓
-Privileged Activity
-        ↓
-Process Creation
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

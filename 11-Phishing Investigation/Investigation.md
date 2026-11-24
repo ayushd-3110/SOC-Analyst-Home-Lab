@@ -1,70 +1,19 @@
-PHISHING INVESTIGATION TIMELINE
-================================
+# Investigation — Phishing Link Triage
 
-1. Suspicious email identified
-   ↓
-2. Email sender and subject analyzed
-   ↓
-3. Phishing indicators identified
-   ↓
-4. Suspicious /verify URL investigated
-   ↓
-5. HTTP request generated from Kali test machine
-   ↓
-6. IIS activity collected by Splunk
-   ↓
-7. Source IP and URL activity investigated
-   ↓
-8. IOCs extracted
-   ↓
-9. Evidence correlated
-   ↓
-10. Final SOC assessment completed
+## Question
 
+What does the archived telemetry establish about activity on Windows IIS endpoint 192.168.234.130, and what remains uncertain?
 
----
+## Observations
 
-# 7. `Investigation.md`
+I reviewed seven recorded HTTP requests from 192.168.234.129 between 14:35:20 and 14:38:32. All returned HTTP 404. The paths were /verify, /account and /login.
 
-```markdown
-# Investigation — Phishing Investigation
+## Analysis
 
-## Investigation Summary
+The requests reflect controlled URL investigation, not confirmed victim interaction. An original email file and independently verified mail-header authentication are not available in this repository.
 
-A suspicious email was analyzed after being reported as potentially malicious.
+## Conclusion and follow-up
 
-The email claimed to originate from an IT Security team and requested account verification.
+Suspicious sample email investigated; no credential submission or compromise established. Preserve an original email and headers when available; distinguish mail-delivery, URL access and credential-submission evidence.
 
-The message used urgency and threatened account suspension.
-
----
-
-## Investigation Timeline
-
-1. Suspicious email identified.
-2. Sender analyzed.
-3. Subject analyzed.
-4. URL extracted.
-5. Phishing indicators identified.
-6. URL safely investigated from Kali.
-7. HTTP activity generated.
-8. IIS logs reviewed.
-9. Splunk searched for related activity.
-10. Source IP identified.
-11. URL path identified.
-12. IOCs extracted.
-13. MITRE ATT&CK mapping performed.
-14. Final assessment documented.
-
----
-
-## Email Analysis
-
-Sender:
-
-```text
-security-alert@company-security.example
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+[Evidence observations](Evidence-Observed.md) · [Incident report](Incident-Report.md)

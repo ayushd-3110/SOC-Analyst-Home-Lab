@@ -1,76 +1,40 @@
-# Lab 5 – Windows Registry Persistence Detection
+# Lab 5: Registry Persistence Investigation
 
-## Overview
+## Purpose
 
-This lab demonstrates how attackers establish persistence by modifying Windows Registry Run Keys. Instead of relying on Sysmon, detection is performed using native Windows Security Event Logs collected in Splunk.
+I used this controlled SOC exercise to practice reviewing Windows or web telemetry in Splunk, interpreting the available evidence and documenting an analyst verdict.
 
-The attack uses `reg.exe` to create a malicious startup registry entry that automatically executes after user logon.
+## Environment and observed results
 
----
+- **Asset:** DESKTOP-PB7D0G9
+- **Evidence date:** 26 July 2026
+- **SIEM:** Splunk Enterprise
 
-## Objectives
+I verified the controlled Run-key entry Lab5Persistence and reviewed the archived dashboard, which displays six registry-related records.
 
-- Simulate Windows Registry Persistence
-- Monitor registry modifications using Windows Security Logs
-- Detect registry access and value changes
-- Investigate persistence using Splunk
-- Map the activity to the MITRE ATT&CK Framework
+## Investigation limitations
 
----
+The dashboard's object name, value name and user columns are blank; broad object-access and process creation records do not independently prove changes to the particular value. Execution at the next logon has not been demonstrated.
 
-## Technologies Used
+## Analyst verdict
 
-- Windows 10 Pro
-- Kali Linux
-- Splunk Enterprise
-- Splunk Universal Forwarder
-- Windows Security Logs
-- VMware Workstation
+Controlled registry artifact observed; attacker persistence not established.
 
----
+Document the actual registry value and distinguish creation, execution and cleanup evidence.
 
-## Event IDs Used
+## Documentation
 
-| Event ID | Description |
-|----------|-------------|
-| 4688 | Process Creation |
-| 4663 | Registry Object Access |
-| 4657 | Registry Value Modified |
+- [Evidence and screenshot observations](Evidence-Observed.md)
+- [Incident report](Incident-Report.md)
+- [Scenario](Scenario.md)
+- [Objectives](Objectives.md)
+- [Detection](Detection.md)
+- [Investigation](Investigation.md)
+- [Splunk Queries](Splunk-Queries.md)
+- [Dashboard](Dashboard.md)
+- [IOC](IOC.md)
+- [MITRE Mapping](MITRE-Mapping.md)
+- [Lessons Learned](Lessons-Learned.md)
+- [References](References.md)
 
----
-
-## Attack
-
-```
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run ^
-/v WindowsUpdate ^
-/t REG_SZ ^
-/d "C:\Windows\System32\cmd.exe" ^
-/f
-```
-
----
-
-## Detection
-
-The attack is detected by correlating:
-
-4688 → reg.exe executed
-
-↓
-
-4663 → Registry Key Accessed
-
-↓
-
-4657 → Registry Value Modified
-
----
-
-## Outcome
-
-The malicious registry modification was successfully detected using Windows Security Event Logs without Sysmon.
-
-## Screenshot Evidence
-
-For the exact evidence visible in the supplied screenshots, see [`Evidence-Observed.md`](Evidence-Observed.md). The documentation uses the screenshot evidence as the boundary for claims and avoids treating simulation artifacts as real-world compromise.
+The original screenshots and dashboard exports are retained as historical evidence. The scripts, searches and scenarios in this folder are training materials; only results explicitly supported by the archived evidence are treated as observed. No new dashboard execution is claimed.

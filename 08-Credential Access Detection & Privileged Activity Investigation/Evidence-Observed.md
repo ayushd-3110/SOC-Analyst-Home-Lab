@@ -18,3 +18,9 @@ The screenshot shows Event ID 4624 with logon type **5** for the computer/system
 
 ## Evidence Boundary
 No real Mimikatz execution or credential extraction is shown. The 4672 event belongs to SYSTEM and must not be attributed to the `ayush` simulation account.
+
+## Additional review findings
+
+The service logon is not an interactive ayush session, and SYSTEM privileges cannot be attributed to ayush. The archived dashboard shows one marker, no process-panel results and a missing username.
+
+**Disposition:** Keyword-based detection concept demonstrated; no credential dumping or privilege escalation established.
