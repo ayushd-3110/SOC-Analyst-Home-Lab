@@ -1,44 +1,156 @@
-# SOC Analyst Home Lab | Ayush Dhumal
+# SOC Analyst Home Lab
 
-A hands-on SOC analyst portfolio focused on Windows and IIS telemetry, Splunk search and dashboards, alert triage, threat hunting, evidence interpretation and incident reporting. All activities were performed in a controlled training environment.
+A hands-on cybersecurity portfolio demonstrating practical Security
+Operations Center (SOC) skills through 14 security investigation labs
+and an enterprise incident response capstone.
 
-## Portfolio
+## Project Overview
 
-| Lab | Investigation |
+I developed this home lab to strengthen my practical skills in security
+monitoring, log analysis, alert triage, threat hunting, incident
+investigation, and incident response.
+
+The project uses a controlled virtual environment to investigate
+security-related events through Splunk and Windows endpoint telemetry.
+
+Each investigation includes supporting evidence, analytical findings,
+detection searches, and documentation of observed limitations.
+
+## Tools and Technologies
+
+| Tool | Purpose |
 |---|---|
-| 01 | [Windows Authentication Monitoring](01-Windows-Event-Logs/README.md) |
-| 02 | [Network Connection and Port-Scan Investigation](02-Lab-Port-Scanning/README.md) |
-| 03 | [Brute-Force Authentication Investigation](03-Brute-Force-Attack/README.md) |
-| 04 | [PowerShell Activity Investigation](04-PowerShell-Attack-Detection/README.md) |
-| 05 | [Registry Persistence Investigation](05-Windows%20Registry%20Persistence%20Dashboard/README.md) |
-| 06 | [Scheduled Task Investigation](06-Scheduled%20Task%20Persistence/README.md) |
-| 07 | [LOLBins Process Investigation](07-LOLBins%20Detection/README.md) |
-| 08 | [Credential-Access Indicator and Privileged Logon Investigation](08-Credential%20Access%20Detection%20%26%20Privileged%20Activity%20Investigation/README.md) |
-| 09 | [Ransomware-Style File Activity Investigation](09-Ransomware%20Simulation/README.md) |
-| 10 | [IIS Web Security Investigation](10-Web%20Attack%20Detection/README.md) |
-| 11 | [Phishing Link Triage](11-Phishing%20Investigation/README.md) |
-| 12 | [Suspected Account Compromise Investigation](12-Account%20Compromise%20Investigation/README.md) |
-| 13 | [Harmless Malware-Artifact Investigation](13-Malware%20Investigation/README.md) |
-| 14 | [Endpoint Threat Hunting](14-Threat%20Hunting/README.md) |
-| Capstone | [Enterprise SOC Incident Response](Final-Project%20%5BEnterprise%20SOC%20Incident%20Response%5D/README.md) |
+| Splunk Enterprise | SIEM, log analysis and dashboards |
+| Splunk Universal Forwarder | Log collection |
+| Windows Event Viewer | Windows security event analysis |
+| Sysmon | Endpoint telemetry |
+| Windows | Monitored endpoint |
+| Kali Linux | Controlled lab environment |
+| VMware Workstation | Virtualization |
+| Microsoft IIS | Web server log investigation |
+| SPL | Security event searching and analysis |
+| MITRE ATT&CK | Threat behavior mapping |
 
-## Environment
+## Lab Portfolio
 
-- Splunk Enterprise and Windows Security logs
-- Sysmon and Windows endpoint telemetry where available
-- IIS web logs for web- and email-link investigations
-- Windows and Kali virtual machines in a controlled network
+| No. | Lab | Skills Demonstrated |
+|---|---|---|
+| 01 | Windows Event Logs | Authentication monitoring |
+| 02 | Port Scanning Detection | Network traffic investigation |
+| 03 | Brute-Force Detection | Authentication anomaly analysis |
+| 04 | PowerShell Activity Detection | Process and script analysis |
+| 05 | Registry Persistence | Registry event investigation |
+| 06 | Scheduled Task Persistence | Scheduled task monitoring |
+| 07 | LOLBins Detection | Legitimate binary usage analysis |
+| 08 | Credential Access Investigation | Privileged activity analysis |
+| 09 | Ransomware Simulation | File activity investigation |
+| 10 | Web Attack Detection | IIS log analysis |
+| 11 | Phishing Investigation | Suspicious email and URL triage |
+| 12 | Account Compromise Investigation | Authentication investigation |
+| 13 | Malware Investigation | Process and file artifact analysis |
+| 14 | Threat Hunting | Proactive security investigation |
+| 15 | Enterprise SOC Incident Response | End-to-end incident investigation |
 
-The lab environment changed across exercises; each lab documents its own observed host and date. The final project uses Windows host DESKTOP-NH5RCBO, index main and private lab addresses.
+## SOC Investigation Workflow
 
-## Evidence and scope
+1. Identify suspicious security events.
+2. Review and validate available telemetry.
+3. Investigate affected hosts and accounts.
+4. Analyze process and authentication activity.
+5. Collect and document relevant evidence.
+6. Assess potential false positives.
+7. Map relevant behavior to MITRE ATT&CK.
+8. Determine an evidence-based analyst verdict.
+9. Document response recommendations.
+10. Prepare an incident report.
 
-Each lab includes a screenshot-grounded evidence summary and an incident report. The archive contains 148 original PNG screenshots and two PDF dashboard exports. An observed event is not automatically a malicious event; a keyword match, successful logon or HTTP response does not establish compromise. Simulated behavior and unverified hypotheses are labeled accordingly.
+## Enterprise SOC Incident Response Capstone
 
-Archived dashboard results are kept as captured. Reviewed searches and proposed improvements have not been executed in a live Splunk instance as part of the documentation revision.
+The final project integrates skills developed throughout the individual
+labs into a structured incident investigation.
 
-## Skills demonstrated
+Key investigation areas include:
 
-Authentication triage, Windows event review, process analysis, network and web log interpretation, false-positive assessment, threat hunting, incident timelines, evidence handling and SOC reporting.
+- Authentication anomalies
+- Endpoint process activity
+- PowerShell monitoring
+- Discovery-related activity
+- Persistence investigation
+- Credential-access indicators
+- Network authentication
+- Threat hunting
+- Incident response and recovery assessment
+- Executive reporting
 
-See [Skills Demonstrated](Skills-Demonstrated.md) for the skills overview.
+The investigation distinguishes confirmed observations from simulated
+behavior and unverified hypotheses.
+
+## Evidence and Documentation
+
+The repository contains:
+
+- 14 individual SOC investigation labs
+- 1 enterprise incident response capstone
+- 148 original screenshots
+- 14 individual lab dashboards
+- 2 PDF dashboard exports
+- Evidence-based incident reports
+- SPL investigation searches
+- MITRE ATT&CK mappings
+- Lessons learned and investigation limitations
+
+## Skills Demonstrated
+
+### Security Monitoring
+
+- SIEM monitoring and log analysis
+- Windows Security event investigation
+- Authentication anomaly identification
+- Endpoint activity monitoring
+
+### Detection Engineering
+
+- Splunk SPL searches
+- Dashboard development
+- Security event classification
+- False-positive assessment
+
+### Threat Investigation
+
+- Evidence collection
+- IOC analysis
+- Process investigation
+- Authentication and timeline analysis
+- Threat hunting
+
+### Incident Response
+
+- Alert triage
+- Incident severity assessment
+- Containment and recovery considerations
+- Technical incident documentation
+- Executive reporting
+
+## Evidence Integrity
+
+All original screenshots and dashboard exports have been preserved.
+
+The documentation distinguishes observed events, controlled simulations,
+and unverified findings. Archived dashboard results are historical
+evidence, and proposed detection improvements require live validation.
+
+## Disclaimer
+
+This project was developed for educational purposes within an authorized,
+controlled home-lab environment.
+
+No real-world compromise, credential theft, or destructive malware
+execution is claimed.
+
+## Author
+
+**Ayush Dhumal**
+
+Aspiring SOC Analyst | Cybersecurity Enthusiast
+
+GitHub: https://github.com/ayushd-3110
